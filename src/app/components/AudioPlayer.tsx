@@ -15,19 +15,32 @@ export default function AudioPlayer({ text, slideIndex }: Props) {
   // Pick the best available voice: prefer deep English male
   const getBestVoice = useCallback((): SpeechSynthesisVoice | null => {
     const voices = window.speechSynthesis.getVoices();
+    // Prefer known deep male voices (ordered by quality)
     const preferred = [
       "Google UK English Male",
       "Microsoft George Online (Natural) - English (United Kingdom)",
+      "Microsoft Ryan Online (Natural) - English (United Kingdom)",
+      "Microsoft Guy Online (Natural) - English (United States)",
       "Microsoft David Desktop - English (United States)",
+      "Microsoft Mark Desktop - English (United States)",
       "Google US English",
-      "Alex",
-      "Daniel",
+      "Alex",       // macOS deep male
+      "Daniel",     // macOS UK male
+      "Fred",       // macOS robotic but deep
+      "Arthur",     // macOS UK male
+      "Thomas",
+      "Bruce",
     ];
     for (const name of preferred) {
       const v = voices.find((v) => v.name === name);
       if (v) return v;
     }
-    // Fallback: any English voice
+    // Fallback: pick first English voice that sounds male by name
+    const maleHints = ["male", "man", "guy", "george", "david", "mark", "ryan", "james"];
+    const maleFallback = voices.find((v) =>
+      maleHints.some((h) => v.name.toLowerCase().includes(h))
+    );
+    if (maleFallback) return maleFallback;
     return voices.find((v) => v.lang.startsWith("en")) ?? voices[0] ?? null;
   }, []);
 

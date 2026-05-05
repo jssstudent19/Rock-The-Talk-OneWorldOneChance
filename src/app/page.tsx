@@ -115,7 +115,17 @@ export default function Home() {
           </div>
           <div className="panel-header">
             <span className="chapter-badge">{slide.chapter}</span>
-            <span className="slide-counter">{current + 1} / {total}</span>
+            <div className="panel-header-right">
+              <span className="slide-counter">{current + 1} / {total}</span>
+              <button
+                className="home-btn"
+                onClick={() => { window.speechSynthesis?.cancel(); setPhase("landing"); setCurrent(0); }}
+                title="Go to Home"
+                aria-label="Home"
+              >
+                ⌂
+              </button>
+            </div>
           </div>
         </div>
 
