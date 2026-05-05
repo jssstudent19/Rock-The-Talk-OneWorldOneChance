@@ -128,7 +128,7 @@ export default function LandingPage({ onContinue, onQuiz }: Props) {
                 &nbsp; Take me to the Story
               </button>
               <button
-                className="confirm-btn-secondary"
+                className="confirm-btn-primary"
                 onClick={() => { setShowQuizConfirm(false); onQuiz(); }}
               >
                 Skip — Continue to Quiz
