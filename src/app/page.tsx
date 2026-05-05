@@ -123,7 +123,7 @@ export default function Home() {
                 title="Go to Home"
                 aria-label="Home"
               >
-                ⌂
+                ⌂ HOME
               </button>
             </div>
           </div>
