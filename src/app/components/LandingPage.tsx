@@ -69,7 +69,7 @@ export default function LandingPage({ onContinue, onQuiz }: Props) {
         <div className={`landing-rule ${phase >= 3 ? "reveal" : ""}`} />
 
         <div className={`landing-theme ${phase >= 3 ? "reveal" : ""}`}>
-          <span className="theme-line-1">ONE WORLD</span>
+          <span className="theme-line-1">ONE EARTH</span>
           <span className="theme-dot">✦</span>
           <span className="theme-line-2">ONE CHANCE</span>
         </div>
